@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Users from '../views/Users.vue'
+import { authGuard } from "../auth/authGuard";
 
 Vue.use(VueRouter)
 
@@ -22,7 +23,8 @@ Vue.use(VueRouter)
   {
     path: '/users',
     name: 'Users',
-    component: Users
+    component: Users,
+    beforeEnter: authGuard    // This is a private route
   }
 ]
 
