@@ -24,6 +24,8 @@
             <div v-if="!$auth.loading">
               <!-- show login when not authenticated -->
               <a v-if="!$auth.isAuthenticated" @click="login" class="button is-dark"><strong>Sign in</strong></a>
+              <!-- TODO improve CSS for this Welcome -->
+              <!-- <span v-if="$auth.isAuthenticated" class="is-size-6 has-background-light welcome">Welcome, <strong>{{ $auth.user.nickname }}</strong>!</span> -->
               <!-- show logout when authenticated -->
               <a v-if="$auth.isAuthenticated" @click="logout" class="button is-dark"><strong>Log out</strong></a>
             </div>
