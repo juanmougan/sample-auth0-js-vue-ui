@@ -9,20 +9,21 @@
         </tr>
       </thead>
       <tbody>
-        <li v-for="user in users" :key="user.email">
-          <UserRow name=user.name email=user.email isAdmin=user.is_admin />
-        </li>
+        <tr v-for="user in users" :key="user.email">
+          <!-- <UserRow name=user.name email=user.email isAdmin=user.is_admin /> -->
+          <td>{{user.name}}</td><td>{{user.email}}</td><td>{{user.is_admin}}</td>
+        </tr>
       </tbody>
     </table>
   </div>
 </template>
 <script>
-import UserRow from "@/components/user-row.vue";
+// import UserRow from "@/components/user-row.vue";
 import UserService from '@/services/user-service.js';
 export default {
   name: "UserList",
   components: {
-    UserRow
+    // UserRow
   },
   data() {
     return {
@@ -39,7 +40,11 @@ export default {
       UserService.getUsers()
       .then(
         (users => {
-          console.log(`Got data: ${users}`);
+          console.log(`Got data:`);
+          console.log(users);
+          // console.log(JSON.stringify(users));
+          // console.log("Let's deserialize");
+          // console.log(JSON.stringify(users[0]));
           this.$set(this, "users", users);
         }).bind(this)
       );
