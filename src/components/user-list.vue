@@ -40,14 +40,11 @@ export default {
       UserService.getUsers()
       .then(
         (users => {
-          console.log(`Got data:`);
-          console.log(users);
-          // console.log(JSON.stringify(users));
-          // console.log("Let's deserialize");
-          // console.log(JSON.stringify(users[0]));
           this.$set(this, "users", users);
         }).bind(this)
-      );
+      )
+      // TODO this shouldn't happen, unless there's any Auth0 issue, but improve it anyway
+      .catch(err => {console.log("Something went wrong: ", err)});
     }
   }
 };
