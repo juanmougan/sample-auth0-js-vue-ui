@@ -36,8 +36,11 @@ export default {
   // NEW
   methods: {
     async getUsersData() {
+      // Get the access token from the auth wrapper
+      const accessToken = await this.$auth.getTokenSilently()
+      
       // NEW - Use the userService to call the getUsers() method
-      UserService.getUsers()
+      UserService.getUsers(accessToken)
       .then(
         (users => {
           this.$set(this, "users", users);
